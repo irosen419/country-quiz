@@ -1,11 +1,10 @@
-import { countryInfo } from './data'
+import QuizCard from './Containers/QuizCard'
 
 function App() {
-  console.log("Countries: ", countryInfo)
   return (
     <div className="App">
       <h1>Country Quiz</h1>
-
+      <QuizCard />
     </div>
   );
 }
