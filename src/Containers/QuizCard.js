@@ -9,17 +9,16 @@ function QuizCard() {
 
     // useEffect
 
-    const setCountries = () => {
-        fetch('https://restcountries.eu/rest/v2/all')
-            .then(resp => resp.json())
-            .then(data => {
-                setCountryArray(data.map(country => ({ "name": country.name, "capital": country.capital, "flag": country.flag })))
-            })
-    }
+    useEffect(async () => {
+        const response = await fetch('https://restcountries.eu/rest/v2/all')
+        const data = await response.json()
+        const countries = data.map(country => ({ "name": country.name, "capital": country.capital, "flag": country.flag }))
+        setCountryArray(countries)
+    }, [])
 
     const getCountry = () => {
         let countryObject = countryArray[Math.floor(Math.random() * countryArray.length)]
-
+        console.log(countryObject)
     }
 
     return (
