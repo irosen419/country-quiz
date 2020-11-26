@@ -20,8 +20,8 @@ function QuizCard() {
         setCountryArray(countries)
     }, [])
 
-    //keeps track of question number
-    useEffect(() => console.log(numberAnswered), [numberAnswered])
+    //when user presses start or next, the we change the countries in the question
+    useEffect(() => getCountries(), [countryArray, numberAnswered])
 
     //retrieves 4 random countries from the countryArray
     const getCountries = () => {
@@ -31,16 +31,26 @@ function QuizCard() {
             countryObjects.push(countryArray[Math.floor(Math.random() * countryArray.length)])
             i++
         }
+        // console.log(numberAnswered, countryObjects)
         setCurrentCountries(countryObjects)
     }
 
     return (
         <div id="quizcard">
-            <h2>{ }</h2>
-            <button onClick={() => {
-                getCountries();
-                setNumberAnswered(numberAnswered + 1);
-            }}>Next</button>
+            {/* ensures that when numberAnswered is even we rotate between Capital and Flag questions */}
+            {
+                numberAnswered % 2 === 0 ?
+                    <CapitalQuestion props={currentCountries ? currentCountries : null} />
+                    : <FlagQuestion props={currentCountries ? currentCountries : null} />
+            }
+            {/* caps the question number at 10. when clicked, incremements question number */}
+            {
+                numberAnswered < 10 ?
+                    <button onClick={() => {
+                        setNumberAnswered(numberAnswered + 1);
+                    }}>Next</button>
+                    : null
+            }
         </div>
     )
 }
