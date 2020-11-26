@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
-// import { countryArray } from '../data'
+import '../SCSS/QuizCard.scss'
 
 function QuizCard() {
 
     const [countryArray, setCountryArray] = useState([])
+    const [currentCountry, setCurrentCountry] = useState(null)
     const [score, setScore] = useState(0)
     const [answered, setAnswered] = useState(false)
-
-    // useEffect
 
     useEffect(async () => {
         const response = await fetch('https://restcountries.eu/rest/v2/all')
@@ -18,12 +17,13 @@ function QuizCard() {
 
     const getCountry = () => {
         let countryObject = countryArray[Math.floor(Math.random() * countryArray.length)]
-        console.log(countryObject)
+        setCurrentCountry(countryObject)
+        console.log(currentCountry)
     }
 
     return (
-        <div>
-            <h2>{getCountry()}</h2>
+        <div id="quizcard">
+            <h2>{ }</h2>
         </div>
     )
 }
