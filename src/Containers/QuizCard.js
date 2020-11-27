@@ -36,12 +36,12 @@ function QuizCard() {
     }
 
     return (
-        <div id="quizcard">
+        <div id="quiz-card">
             {/* ensures that when numberAnswered is even we rotate between Capital and Flag questions */}
             {
                 numberAnswered % 2 === 0 ?
-                    <CapitalQuestion props={currentCountries ? currentCountries : null} />
-                    : <FlagQuestion props={currentCountries ? currentCountries : null} />
+                    <CapitalQuestion countries={currentCountries ? currentCountries : null} />
+                    : <FlagQuestion countries={currentCountries ? currentCountries : null} />
             }
             {/* caps the question number at 10. when clicked, incremements question number */}
             {
