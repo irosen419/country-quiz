@@ -1,7 +1,20 @@
+import { useState, useEffect } from 'react'
+import AnswerChoice from '../Components/AnserwChoice'
+
 function FlagQuestion({ countries }) {
 
+    const [answer, setAnswer] = useState(null)
+    const [wrongAnswers, setWrongAnswers] = useState(null)
+
+    useEffect(() => {
+        if (countries) {
+            setAnswer(countries[0])
+            setWrongAnswers(countries.slice(1, 4))
+        }
+    }, [countries])
+
     return (
-        <div>
+        <div id="question-card">
             <h1>Flag Question</h1>
             {
                 countries && countries[0] ?
@@ -11,6 +24,8 @@ function FlagQuestion({ countries }) {
                     </>
                     : null
             }
+
+            {wrongAnswers ? console.log(wrongAnswers) : null}
         </div>
     )
 }

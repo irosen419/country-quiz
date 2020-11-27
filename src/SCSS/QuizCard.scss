@@ -1,5 +1,38 @@
+.App {
+    position: relative;
+}
+
 #quiz-card {
-    width: 500px;
-    height: 700px;
+    position: absolute;
+    width: 464px;
+    height: 629px;
+    left: 488px;
+    top: 252px;
+
+    background: #FFFFFF;
     border: 1px solid black;
+    border-radius: 24px;
+
+    #question-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        img {
+            width: 84px;
+            height: 54px;
+            border-radius: 4px;
+        }
+
+        .answer {
+            width: 400px;
+            height: 56px;
+            margin: 20px;
+            background: #EA8282;
+            border-radius: 12px;
+
+            text-align: center;
+        }
+    }
 }
